@@ -1,15 +1,26 @@
+// две вспомогательные функции для файла templates.js, которые уменьшают дублирование кода и
+// делают функции по созданию html-кода куда более деликатными
 export function row(content, styles = '') {
-  return `<div class="row" style="${styles}">${content}</div>`
+  return `<div class='row' style="${styles}">${content}</div>`;
 }
-
 export function col(content) {
-  return `<div class="col-sm">${content}</div>`
+  return `<div class='col-sm'>${content}</div>`;
 }
 
-export function css(styles = {}) {
-  if (typeof styles === 'string') return styles
-  const toString = key => `${key}: ${styles[key]}`
-  return Object.keys(styles).map(toString).join(';')
+// функция перебирает свойства обьекта и отдает вместо обьекта строку ключ-значение
+export function toCss(styles = {}) {
+  if (typeof styles === 'string') {
+    return styles;
+  }
+  // const keys = Object.keys(styles);
+  // const newArray = keys.map(key => {
+  //   return `${key}: ${styles[key]}`;
+  // });
+  // return newArray.join(';');
+
+  // сокращаю код выше:
+  const toString = key => `${key}: ${styles[key]}`;
+  return Object.keys(styles).map(toString).join(';');
 }
 
 export function block(type) {
@@ -25,5 +36,5 @@ export function block(type) {
       <button type="submit" class="btn btn-primary btn-sm">Добавить</button>
     </form>
     <hr />
-  `
+  `;
 }

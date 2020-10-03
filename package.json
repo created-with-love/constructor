@@ -1,18 +1,26 @@
 {
-  "name": "js-constructor",
+  "name": "constructor",
   "version": "1.0.0",
-  "description": "javascript pure application",
-  "main": "src/index.js",
+  "description": "JS-constructor",
+  "main": "index.js",
   "scripts": {
-    "serve": "parcel ./src/index.html -p 4200 --open",
+    "serve": "parcel ./src/index.html -p 4444 --open",
     "build": "parcel build ./src/index.html --no-source-maps"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/created-with-love/constructor.git"
   },
   "keywords": [
     "js",
     "javascript"
   ],
-  "author": "Vladilen <v@mail.ru>",
+  "author": "Vladymyr <vladymyr_ivanchenko@bigmir.net>",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/created-with-love/constructor/issues"
+  },
+  "homepage": "https://github.com/created-with-love/constructor#readme",
   "devDependencies": {
     "parcel-bundler": "^1.12.4"
   }

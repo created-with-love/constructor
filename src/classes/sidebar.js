@@ -1,40 +1,45 @@
-import {block} from '../utils'
-import {TextBlock, TitleBlock} from './blocks'
+import { block } from '../utils.js';
+import { TextBlock, TitleBlock } from './blocks.js';
 
 export class Sidebar {
   constructor(selector, updateCallback) {
-    this.$el = document.querySelector(selector)
-    this.update = updateCallback
+    //   помечать значком доллара спереди принято те переменные, которые берут значение с ДОМ-дерева
+    this.$el = document.querySelector(selector);
+    this.update = updateCallback;
 
-    this.init()
+    this.init();
   }
 
   init() {
-    this.$el.insertAdjacentHTML('afterbegin', this.template)
-    this.$el.addEventListener('submit', this.add.bind(this))
+    this.$el.insertAdjacentHTML('afterbegin', this.template);
+    this.$el.addEventListener('submit', this.add.bind(this));
   }
 
   get template() {
-    return [
-      block('text'),
-      block('title')
-    ].join('')
+    return [block('text'), block('title')].join('');
   }
 
   add(event) {
-    event.preventDefault()
+    event.preventDefault();
+    // узнает какой тип блока заполнен
+    const type = event.target.name;
 
-    const type = event.target.name
-    const value = event.target.value.value
-    const styles = event.target.styles.value
+    // получает значение текста, который введен в первый интуп блока
+    const value = event.target.value.value;
 
-    const newBlock = type === 'text'
-      ? new TextBlock(value, {styles})
-      : new TitleBlock(value, {styles})
+    // получает значение с инпута styles
+    const styles = event.target.styles.value;
 
-    this.update(newBlock)
+    let newBlock =
+      type === 'text'
+        ? (newBlock = new TextBlock(value, { styles }))
+        : (newBlock = new TitleBlock(value, { styles }));
+    //   else if (type === 'title') {}
 
-    event.target.value.value = ''
-    event.target.styles.value = ''
+    this.update(newBlock);
+
+    event.target.value.value = '';
+
+    event.target.styles.value = '';
   }
 }

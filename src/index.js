@@ -1,5 +1,6 @@
-import {model} from './model'
-import {App} from './classes/app'
-import './styles/main.css'
+import { model } from './model.js';
+import './styles/main.css';
+import { App } from './classes/app.js';
 
-new App(model).init()
+// инициализирует класс App, в котором автоматически запускается функция init (app.js)
+new App(model);
